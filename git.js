@@ -23,6 +23,7 @@ var Git = module.exports = function (options) {
     }
 
     if(! options['work-tree']) {
+      
       options['work-tree'] = path.join(options['git-dir'], '..');
     }
   }
