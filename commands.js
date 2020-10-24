@@ -14,6 +14,7 @@ var isRepo = exports.isRepo = function(){
     }
 
     if(childProcess.code === 128) {
+
       return false;
     }
 
@@ -52,7 +53,13 @@ var pull = exports.pull = function(remote, branch){
  * Add files for a commit.
 **/
 var add = exports.add = function(which){
-  var cmd = 'add', args = [which];
+  // var cmd = 'add', args = [which];
+    // Get rid of nulls and undefineds.
+  var args = [];
+  var cmd = 'add';
+  for(var i = 0, len = which.length; i < len; i++) {
+    if(which[i] != null) args.push(rawargs[i]+"");
+  }
   return this.spawn(cmd, args);
 };
 
