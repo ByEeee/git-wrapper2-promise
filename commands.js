@@ -14,7 +14,6 @@ var isRepo = exports.isRepo = function(){
     }
 
     if(childProcess.code === 128) {
-
       return false;
     }
 
@@ -22,13 +21,14 @@ var isRepo = exports.isRepo = function(){
   });
 };
 
-
+var status = exports.status = function(){
+  return this.spawn('status');
+};
 /*
  * Clone the repository.
 **/
 var clone = exports.clone = function(repo, dir){
   var args = [repo, dir];
-
   return this.spawn('clone', args);
 };
 
@@ -54,11 +54,10 @@ var pull = exports.pull = function(remote, branch){
 **/
 var add = exports.add = function(which){
   // var cmd = 'add', args = [which];
-    // Get rid of nulls and undefineds.
   var args = [];
   var cmd = 'add';
   for(var i = 0, len = which.length; i < len; i++) {
-    if(which[i] != null) args.push(rawargs[i]+"");
+    if(which[i] != null) args.push(which[i]+"");
   }
   return this.spawn(cmd, args);
 };
@@ -75,7 +74,7 @@ var rm = exports.rm = function(which) {
  * Commit the repo.
 **/
 var commit = exports.commit = function(msg, args){
-  args = (args || []).concat(['-m', msg]);
+  args = (args || []).concat(['-am', msg]);
 
   return this.spawn('commit', args);
 };
