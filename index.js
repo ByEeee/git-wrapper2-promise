@@ -6,6 +6,10 @@ var git = new Git({'git-dir': dir});
 var filename =['D:\\workspace\\git_test\\git.js','D:\\workspace\\git_test\\commands.js','D:\\workspace\\git_test\\index.js']
 var remote = 'origin' 
 var branch = 'master'
+var msg = "\"测试1\""
+var email_command = 'git config --global user.email \"1906719816@qq.com\"'
+var user_command = 'git config --global user.name \"ByEeee\"'
+var user_command = 'git config --global user.password \"123456(新的密码)\"'
 // git.isRepo().then(function(isRepo) {
 // 	console.log('isRepo:', isRepo);
 // }).catch(function(err) {
@@ -18,13 +22,12 @@ var branch = 'master'
 // 	console.error(err);
 // });
 
-git.add(filename).then(function(childProcess) {
-	console.log(childProcess.stdout.toString());
-}).catch(function(err) {
-	console.error(err);
-});
+// git.add(filename).then(function(childProcess) {
+// 	console.log(childProcess.stdout.toString());
+// }).catch(function(err) {
+// 	console.error(err);
+// });
 
-// var msg = "\"测试\""
 // git.commit(msg).then(function(childProcess) {
 // 	console.log(childProcess.stdout.toString());
 // }).catch(function(err) {
@@ -43,17 +46,17 @@ git.add(filename).then(function(childProcess) {
 // 	console.error(err);
 // });
 
-// git.push(remote, branch).then(function(childProcess) {
-// 	console.log(childProcess.stdout.toString());
-// }).catch(function(err) {
-// 	console.error(err);
-// });
-
-git.pull(remote, branch).then(function(childProcess) {
+git.push(remote, branch).then(function(childProcess) {
 	console.log(childProcess.stdout.toString());
 }).catch(function(err) {
 	console.error(err);
 });
+
+// git.pull(remote, branch).then(function(childProcess) {
+// 	console.log(childProcess.stdout.toString());
+// }).catch(function(err) {
+// 	console.error(err);
+// });
 // var spawn = require('child_process').spawn
 
 // ls = spawn('cmd.exe', ['/c','D:\\workspace\\test_demo\\dir.bat']);
